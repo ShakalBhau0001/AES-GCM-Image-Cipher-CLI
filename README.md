@@ -298,7 +298,17 @@ Avoid relying on this software for protecting highly sensitive or mission-critic
 
 ## 📸 Preview
 
-![Rich CLI Preview](assets/AES.png)
+### 1. **Encryption**
+
+![Rich CLI Preview](assets/AES-1.png)
+
+### 2. **Decryption**
+
+![Rich CLI Preview](assets/AES-2.png)
+
+### 3. **Exit**
+
+![Rich CLI Preview](assets/AES-3.png)
 
 ---
 
