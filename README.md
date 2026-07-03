@@ -25,10 +25,6 @@ The cryptographic engine is completely independent of the CLI and can be reused 
 ## 🧩 Features
 
 ### 🔒 Encryption
-
-Encrypt any image file using a password.
-
-**Features**
 - AES-256-GCM authenticated encryption
 - PBKDF2-HMAC-SHA256 key derivation
 - 310,000 PBKDF2 iterations
@@ -39,24 +35,22 @@ Encrypt any image file using a password.
 - Output extension: `.gcm`
 - Detects accidental overwrite
 
-**Use-case**
-> Secure personal images, sensitive photos, private files
-
----
-
 ### 🔓 Decryption
-
-Decrypt `.gcm` encrypted files back to original format.
-
-**Features**
 - Restores original image format automatically
 - Verifies authentication tag before decryption
 - Detects wrong passwords
 - Detects corrupted or modified files
 - Validates custom file header before processing
 
-**Use-case**
-> Restore encrypted images with correct password
+### 🎨 Rich CLI Interface
+- Colored terminal output
+- Structured key display tables
+- Styled panels for encoding/decoding results
+- Better user experience and readability
+
+### ⚡ Dual Mode Support
+- 🧼 Basic CLI → Lightweight, no dependencies
+- 🎨 Rich CLI → Enhanced UI with colors and panels
 
 ---
 
@@ -97,6 +91,7 @@ AES-GCM-Image-Cipher-CLI/
 | Salt                 | 16 Bytes (Random)  |
 | IV / Nonce           | 12 Bytes (Random)  |
 | Authentication Tag   | 128-bit GCM Tag    |
+| Rich                 | Interactive CLI interface |
 | Output Extension     | `.gcm`             |
 
 
@@ -104,11 +99,23 @@ AES-GCM-Image-Cipher-CLI/
 
 ---
 
-## 🖥️ CLI Interface
+## 🖥️ CLI Modes
 
-The application uses an easy **menu-driven interface**.
+The application supports three different ways to use the encryption engine.
 
+---
+
+### 1️⃣ Interactive Menu
+
+Launch the application without arguments.
+
+```bash
+python main.py
 ```
+
+Example:
+
+```text
 ==============================
  AES-GCM Image Cipher CLI
 ==============================
@@ -116,10 +123,59 @@ The application uses an easy **menu-driven interface**.
 1. Encrypt Image
 2. Decrypt Image
 3. Exit
-
 ```
 
-> Designed to be beginner-friendly while keeping cryptographic operations secure.
+Perfect for users who prefer guided interaction.
+
+---
+
+### 2️⃣ Command Flags
+
+#### Encrypt
+
+```bash
+python main.py -e -f image.png -p MyPassword
+```
+
+#### Decrypt
+
+```bash
+python main.py -d -f image.gcm -p MyPassword
+```
+
+#### Specify output directory
+
+```bash
+python main.py -e -f image.png -p MyPassword -o output
+```
+
+---
+
+### 3️⃣ CLI Subcommands
+
+#### Encrypt
+
+```bash
+python main.py encrypt -f image.png -p MyPassword
+```
+
+or
+
+```bash
+python main.py enc -f image.png -p MyPassword
+```
+
+#### Decrypt
+
+```bash
+python main.py decrypt -f image.gcm -p MyPassword
+```
+
+or
+
+```bash
+python main.py dec -f image.gcm -p MyPassword
+```
 
 ---
 
@@ -208,6 +264,13 @@ pillow
 - Original extension preservation
 - No plaintext metadata leakage
 - Local processing only
+- Interactive menu-driven interface
+- Full command-line interface (CLI)
+- Short flags (`-e`, `-d`)
+- Subcommands (`encrypt`, `decrypt`)
+- Alias support (`enc`, `dec`)
+- Timestamp-based output filenames
+- Cross-module architecture
 
 ---
 
@@ -233,11 +296,17 @@ Avoid relying on this software for protecting highly sensitive or mission-critic
 
 ---
 
+## 📸 Preview
+
+![Rich CLI Preview](assets/AES.png)
+
+---
+
 ## 🪪 Author
 
-> Developer: **Shakal Bhau**
+> **Developer:** **Shakal Bhau**
 
-> GitHub: **[ShakalBhau0001](https://github.com/ShakalBhau0001)**
+> **GitHub:** **[ShakalBhau0001](https://github.com/ShakalBhau0001)**
 
 ---
 
